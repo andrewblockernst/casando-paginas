@@ -1,0 +1,46 @@
+---
+export interface EventProps {
+  couple_names: string;
+  title: string;
+  event_date?: string;
+  event_time?: string;
+  location_name?: string;
+  location_address?: string;
+}
+
+const event = Astro.props as EventProps;
+---
+
+<section class="text-center mb-10">
+  <h1 class="text-3xl md:text-4xl font-bold mb-2">
+    {event.couple_names}
+  </h1>
+
+  <p class="text-lg text-slate-600 mb-4">{event.title}</p>
+
+  {event.event_date && (
+    <p class="text-md font-semibold">
+      {new Date(event.event_date).toLocaleDateString('es-AR', {
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric',
+      })}
+
+      {event.event_time && (
+        <> · {event.event_time.slice(0, 5)} hs</>
+      )}
+    </p>
+  )}
+
+  {event.location_name && (
+    <p class="mt-2 text-slate-700">
+      {event.location_name}
+    </p>
+  )}
+
+  {event.location_address && (
+    <p class="text-slate-500 text-sm">
+      {event.location_address}
+    </p>
+  )}
+</section>

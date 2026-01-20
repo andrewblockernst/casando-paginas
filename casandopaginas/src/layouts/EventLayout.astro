@@ -1,0 +1,21 @@
+---
+export interface Props {
+  title?: string;
+}
+
+const { title = "Casamiento" } = Astro.props;
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>{title}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+
+  <body class="min-h-screen bg-slate-50 text-slate-900">
+    <main class="max-w-3xl mx-auto px-4 py-10">
+      <slot />
+    </main>
+  </body>
+</html>
