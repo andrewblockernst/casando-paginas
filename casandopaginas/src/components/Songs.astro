@@ -1,0 +1,197 @@
+---
+// Sección de canciones - playlist colaborativa sin necesidad de Spotify API
+// Las canciones se guardan en localStorage del navegador
+---
+
+<section id="canciones" class="py-24 px-6 bg-wedding-cream">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-12">
+      <div class="w-16 h-16 mx-auto mb-6">
+        <lord-icon
+          src="https://cdn.lordicon.com/iltqorsz.json"
+          trigger="loop"
+          delay="2000"
+          colors="primary:#0A2140,secondary:#AAC5E5"
+          style="width:64px;height:64px"
+        ></lord-icon>
+      </div>
+      <p class="font-sans text-wedding-sky tracking-[0.3em] uppercase text-xs mb-3">La fiesta la armamos entre todos</p>
+      <h2 class="section-title mb-4">Canciones</h2>
+      <div class="divider-ornament max-w-xs mx-auto">
+        <span class="text-wedding-sage text-xl">✦</span>
+      </div>
+      <p class="font-serif text-xl italic font-light text-wedding-navy/70 max-w-lg mx-auto leading-relaxed">
+        ¿Qué canción no puede faltar en nuestra fiesta?
+        ¡Sumá la tuya a la playlist!
+      </p>
+    </div>
+
+    <!-- Formulario de agregar canción -->
+    <div class="bg-white border border-wedding-sage/40 p-6 md:p-8 mb-8">
+      <h3 class="font-serif text-xl text-wedding-navy font-light mb-6">Agregá tu canción</h3>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <input
+          type="text"
+          id="song-input"
+          placeholder="Ej: Don't Stop Me Now - Queen"
+          class="flex-1 border border-wedding-sage/60 px-4 py-3 font-sans text-sm text-wedding-navy placeholder-wedding-navy/30 focus:outline-none focus:border-wedding-sky bg-wedding-cream/50"
+          maxlength="100"
+        />
+        <button
+          id="add-song-btn"
+          class="btn-primary whitespace-nowrap"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+          </svg>
+          Agregar
+        </button>
+      </div>
+      <p class="font-sans text-xs text-wedding-navy/40 mt-3">
+        Formato sugerido: Nombre de la canción - Artista
+      </p>
+    </div>
+
+    <!-- Lista de canciones -->
+    <div id="songs-list-container" class="mb-6">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="font-serif text-xl text-wedding-navy font-light">
+          Playlist colaborativa
+          <span id="songs-count" class="font-sans text-sm text-wedding-navy/40 ml-2">(0 canciones)</span>
+        </h3>
+        <button
+          id="export-songs-btn"
+          class="font-sans text-xs tracking-widest uppercase text-wedding-sky hover:text-wedding-navy transition-colors duration-200 flex items-center gap-1"
+          title="Exportar lista"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+          </svg>
+          Exportar
+        </button>
+      </div>
+
+      <!-- Lista vacía placeholder -->
+      <div id="songs-empty" class="border border-dashed border-wedding-sage/40 p-12 text-center">
+        <p class="font-serif text-lg italic text-wedding-navy/30">
+          Todavía no hay canciones. ¡Sé el primero en agregar una!
+        </p>
+      </div>
+
+      <!-- Lista de canciones dinámica -->
+      <ul id="songs-list" class="space-y-2 hidden"></ul>
+    </div>
+
+    <p class="font-sans text-xs text-center text-wedding-navy/30">
+      Las canciones se guardan en tu dispositivo. Los novios recibirán la lista completa.
+    </p>
+  </div>
+</section>
+
+<script>
+  type Song = { id: string; text: string; date: string };
+
+  const STORAGE_KEY = 'caroYlauti_songs';
+
+  function loadSongs(): Song[] {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    } catch {
+      return [];
+    }
+  }
+
+  function saveSongs(songs: Song[]) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(songs));
+  }
+
+  function renderSongs() {
+    const songs = loadSongs();
+    const list = document.getElementById('songs-list')!;
+    const empty = document.getElementById('songs-empty')!;
+    const count = document.getElementById('songs-count')!;
+
+    count.textContent = `(${songs.length} ${songs.length === 1 ? 'canción' : 'canciones'})`;
+
+    if (songs.length === 0) {
+      list.classList.add('hidden');
+      empty.classList.remove('hidden');
+      return;
+    }
+
+    list.classList.remove('hidden');
+    empty.classList.add('hidden');
+
+    list.innerHTML = songs.map((song, i) => `
+      <li class="flex items-center justify-between gap-3 px-4 py-3 bg-white border border-wedding-sage/30 group hover:border-wedding-sky/40 transition-colors duration-200">
+        <div class="flex items-center gap-3">
+          <span class="font-sans text-xs text-wedding-navy/30 w-5 text-right">${i + 1}</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-wedding-sky/60 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+          </svg>
+          <span class="font-sans text-sm text-wedding-navy">${song.text}</span>
+        </div>
+        <button
+          data-delete="${song.id}"
+          class="text-wedding-navy/20 hover:text-rose-400 transition-colors duration-200 opacity-0 group-hover:opacity-100"
+          title="Eliminar"
+          aria-label="Eliminar canción"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </li>
+    `).join('');
+
+    // Delete listeners
+    list.querySelectorAll('[data-delete]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = (btn as HTMLElement).dataset.delete!;
+        const updated = loadSongs().filter(s => s.id !== id);
+        saveSongs(updated);
+        renderSongs();
+      });
+    });
+  }
+
+  // Add song
+  document.getElementById('add-song-btn')!.addEventListener('click', () => {
+    const input = document.getElementById('song-input') as HTMLInputElement;
+    const text = input.value.trim();
+    if (!text) return;
+
+    const songs = loadSongs();
+    songs.push({
+      id: Date.now().toString(),
+      text,
+      date: new Date().toISOString(),
+    });
+    saveSongs(songs);
+    input.value = '';
+    renderSongs();
+  });
+
+  // Enter key
+  document.getElementById('song-input')!.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter') {
+      document.getElementById('add-song-btn')!.click();
+    }
+  });
+
+  // Export
+  document.getElementById('export-songs-btn')!.addEventListener('click', () => {
+    const songs = loadSongs();
+    if (songs.length === 0) return;
+    const text = songs.map((s, i) => `${i + 1}. ${s.text}`).join('\n');
+    const blob = new Blob([`Playlist Caro & Lauti 2026\n${'─'.repeat(30)}\n\n${text}`], { type: 'text/plain' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'playlist-caro-lauti.txt';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
+
+  // Render on load
+  renderSongs();
+</script>

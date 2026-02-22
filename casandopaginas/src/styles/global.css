@@ -1,3 +1,53 @@
+/* Google Fonts - debe ir primero */
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Lato:wght@300;400;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #fdfffa;
+    color: #0a2140;
+    font-family: "Lato", system-ui, sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-family: "Cormorant Garamond", Georgia, serif;
+  }
+}
+
+@layer components {
+  .divider-ornament {
+    @apply flex items-center gap-4 my-8;
+  }
+  .divider-ornament::before,
+  .divider-ornament::after {
+    content: "";
+    @apply flex-1 h-px bg-wedding-sage;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-8 py-3 bg-wedding-navy text-white font-sans font-medium tracking-widest uppercase text-sm transition-all duration-300 hover:bg-wedding-sky hover:text-wedding-navy;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-8 py-3 border border-wedding-navy text-wedding-navy font-sans font-medium tracking-widest uppercase text-sm transition-all duration-300 hover:bg-wedding-navy hover:text-white;
+  }
+
+  .section-title {
+    @apply font-serif text-4xl md:text-5xl text-wedding-navy font-light tracking-wide;
+  }
+
+  .section-subtitle {
+    @apply font-serif text-xl text-wedding-navy/70 italic font-light;
+  }
+}

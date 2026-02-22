@@ -1,0 +1,88 @@
+---
+// Cuenta regresiva al 12 de octubre de 2026
+const weddingDate = '2026-10-12T18:00:00';
+---
+
+<section id="cuenta-regresiva" class="py-20 px-6 bg-wedding-navy text-white text-center">
+  <div class="max-w-4xl mx-auto">
+    <p class="font-sans text-wedding-sky tracking-[0.3em] uppercase text-xs md:text-sm mb-4">Faltan</p>
+    <h2 class="font-serif text-3xl md:text-4xl font-light tracking-wide mb-12 text-white">
+      para el gran día
+    </h2>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8" id="countdown-grid">
+      <!-- Días -->
+      <div class="flex flex-col items-center">
+        <div class="w-24 h-24 md:w-32 md:h-32 border border-wedding-sky/40 flex items-center justify-center mb-3 relative overflow-hidden">
+          <span id="cd-days" class="font-serif text-4xl md:text-5xl font-light text-white">—</span>
+        </div>
+        <span class="font-sans text-xs tracking-[0.3em] uppercase text-wedding-sky/80">Días</span>
+      </div>
+
+      <!-- Horas -->
+      <div class="flex flex-col items-center">
+        <div class="w-24 h-24 md:w-32 md:h-32 border border-wedding-sky/40 flex items-center justify-center mb-3">
+          <span id="cd-hours" class="font-serif text-4xl md:text-5xl font-light text-white">—</span>
+        </div>
+        <span class="font-sans text-xs tracking-[0.3em] uppercase text-wedding-sky/80">Horas</span>
+      </div>
+
+      <!-- Minutos -->
+      <div class="flex flex-col items-center">
+        <div class="w-24 h-24 md:w-32 md:h-32 border border-wedding-sky/40 flex items-center justify-center mb-3">
+          <span id="cd-minutes" class="font-serif text-4xl md:text-5xl font-light text-white">—</span>
+        </div>
+        <span class="font-sans text-xs tracking-[0.3em] uppercase text-wedding-sky/80">Minutos</span>
+      </div>
+
+      <!-- Segundos -->
+      <div class="flex flex-col items-center">
+        <div class="w-24 h-24 md:w-32 md:h-32 border border-wedding-sky/40 flex items-center justify-center mb-3">
+          <span id="cd-seconds" class="font-serif text-4xl md:text-5xl font-light text-white">—</span>
+        </div>
+        <span class="font-sans text-xs tracking-[0.3em] uppercase text-wedding-sky/80">Segundos</span>
+      </div>
+    </div>
+
+    <p class="mt-12 font-serif text-lg italic text-white/60">12 de octubre de 2026</p>
+  </div>
+</section>
+
+<script>
+  const target = new Date('2026-10-12T18:00:00').getTime();
+
+  const $days = document.getElementById('cd-days')!;
+  const $hours = document.getElementById('cd-hours')!;
+  const $minutes = document.getElementById('cd-minutes')!;
+  const $seconds = document.getElementById('cd-seconds')!;
+
+  function pad(n: number) {
+    return String(n).padStart(2, '0');
+  }
+
+  function update() {
+    const now = Date.now();
+    const diff = target - now;
+
+    if (diff <= 0) {
+      $days.textContent = '0';
+      $hours.textContent = '00';
+      $minutes.textContent = '00';
+      $seconds.textContent = '00';
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    $days.textContent = String(days);
+    $hours.textContent = pad(hours);
+    $minutes.textContent = pad(minutes);
+    $seconds.textContent = pad(seconds);
+  }
+
+  update();
+  setInterval(update, 1000);
+</script>

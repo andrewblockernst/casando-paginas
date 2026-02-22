@@ -1,0 +1,127 @@
+---
+// Fecha, lugar y como llegar
+// TODO: Reemplazar con la dirección real de la iglesia / salón
+// TODO: Agregar hora real del casamiento civil
+---
+
+<section id="evento" class="py-24 px-6 bg-wedding-cream">
+  <div class="max-w-5xl mx-auto">
+    <!-- Título -->
+    <div class="text-center mb-16">
+      <p class="font-sans text-wedding-sky tracking-[0.3em] uppercase text-xs mb-3">El gran día</p>
+      <h2 class="section-title">Fecha & Lugar</h2>
+      <div class="divider-ornament max-w-xs mx-auto">
+        <span class="text-wedding-sage text-xl">✦</span>
+      </div>
+    </div>
+
+    <!-- Grilla de eventos -->
+    <div class="grid md:grid-cols-2 gap-8 mb-16">
+
+      <!-- Casamiento Civil -->
+      <div class="border border-wedding-sage/50 p-8 text-center hover:shadow-lg transition-shadow duration-300 bg-white">
+        <div class="w-12 h-12 mx-auto mb-5 flex items-center justify-center">
+          <lord-icon
+            src="https://cdn.lordicon.com/lupuorrc.json"
+            trigger="hover"
+            colors="primary:#0A2140,secondary:#AAC5E5"
+            style="width:48px;height:48px"
+          ></lord-icon>
+        </div>
+        <p class="font-sans text-xs tracking-[0.3em] uppercase text-wedding-sky mb-2">Civil</p>
+        <h3 class="font-serif text-2xl text-wedding-navy font-light mb-4">Casamiento Civil</h3>
+        <p class="font-sans text-wedding-navy/70 text-sm leading-relaxed mb-1">
+          Fecha y hora a confirmar
+        </p>
+        <p class="font-sans text-wedding-navy/50 text-xs tracking-wide">
+          <!-- TODO: Agregar dirección del registro civil -->
+          Dirección a confirmar
+        </p>
+      </div>
+
+      <!-- Ceremonia Religiosa -->
+      <div class="border border-wedding-sage/50 p-8 text-center hover:shadow-lg transition-shadow duration-300 bg-white">
+        <div class="w-12 h-12 mx-auto mb-5 flex items-center justify-center">
+          <lord-icon
+            src="https://cdn.lordicon.com/racldupm.json"
+            trigger="hover"
+            colors="primary:#0A2140,secondary:#AAC5E5"
+            style="width:48px;height:48px"
+          ></lord-icon>
+        </div>
+        <p class="font-sans text-xs tracking-[0.3em] uppercase text-wedding-sky mb-2">Iglesia</p>
+        <h3 class="font-serif text-2xl text-wedding-navy font-light mb-4">Ceremonia Religiosa</h3>
+        <p class="font-sans text-wedding-navy/70 text-sm mb-1">Lunes 12 de octubre de 2026</p>
+        <p class="font-sans text-wedding-navy/70 text-sm mb-3">
+          <!-- TODO: Agregar hora real -->
+          Hora a confirmar
+        </p>
+        <p class="font-sans text-wedding-navy/50 text-xs tracking-wide">
+          <!-- TODO: Agregar nombre e dirección de la iglesia -->
+          Iglesia · Dirección a confirmar
+        </p>
+      </div>
+
+      <!-- Recepción / Fiesta -->
+      <div class="border border-wedding-sage/50 p-8 text-center hover:shadow-lg transition-shadow duration-300 bg-white md:col-span-2 md:max-w-md md:mx-auto w-full">
+        <div class="w-12 h-12 mx-auto mb-5 flex items-center justify-center">
+          <lord-icon
+            src="https://cdn.lordicon.com/eouimtlu.json"
+            trigger="hover"
+            colors="primary:#0A2140,secondary:#AAC5E5"
+            style="width:48px;height:48px"
+          ></lord-icon>
+        </div>
+        <p class="font-sans text-xs tracking-[0.3em] uppercase text-wedding-sky mb-2">Festejo</p>
+        <h3 class="font-serif text-2xl text-wedding-navy font-light mb-4">Recepción & Fiesta</h3>
+        <p class="font-sans text-wedding-navy/70 text-sm mb-1">Lunes 12 de octubre de 2026</p>
+        <p class="font-sans text-wedding-navy/70 text-sm mb-3">
+          <!-- TODO: Agregar hora del ingreso a la fiesta -->
+          Hora a confirmar
+        </p>
+        <p class="font-sans text-wedding-navy/50 text-xs tracking-wide mb-6">
+          <!-- TODO: Agregar nombre y dirección del salón -->
+          Salón · Dirección a confirmar
+        </p>
+        <!-- Botón Cómo llegar -->
+        <a
+          href="https://maps.google.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-primary text-xs"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+          Cómo llegar
+        </a>
+      </div>
+    </div>
+
+    <!-- Embed de Google Maps -->
+    <div class="w-full overflow-hidden border border-wedding-sage/30 shadow-sm">
+      <!-- TODO: Reemplazar este iframe con el embed real de Google Maps del salón -->
+      <div class="w-full h-72 md:h-96 bg-wedding-sky/20 flex items-center justify-center">
+        <div class="text-center text-wedding-navy/40">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 mx-auto mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+          </svg>
+          <p class="font-sans text-sm tracking-wide">Insertar embed de Google Maps aquí</p>
+          <p class="font-sans text-xs mt-1 opacity-70">Reemplazar con iframe real del salón</p>
+        </div>
+      </div>
+      <!-- Una vez que tengas la dirección, pega aquí el iframe de Google Maps:
+      <iframe
+        src="https://www.google.com/maps/embed?pb=TU_EMBED_URL"
+        width="100%"
+        height="400"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+      -->
+    </div>
+  </div>
+</section>

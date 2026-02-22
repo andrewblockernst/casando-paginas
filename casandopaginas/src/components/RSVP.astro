@@ -1,0 +1,47 @@
+---
+// Formulario de confirmación de asistencia
+// TODO: Reemplazar GOOGLE_FORMS_URL con el link real del formulario
+const GOOGLE_FORMS_URL = 'https://forms.google.com'; // ← Reemplazar con URL real
+---
+
+<section id="asistencia" class="py-24 px-6 bg-wedding-sky/20">
+  <div class="max-w-2xl mx-auto text-center">
+    <p class="font-sans text-wedding-sky tracking-[0.3em] uppercase text-xs mb-3">¡Nos encantaría verte!</p>
+    <h2 class="section-title mb-4">Confirmá tu asistencia</h2>
+    <div class="divider-ornament max-w-xs mx-auto">
+      <span class="text-wedding-sage text-xl">✦</span>
+    </div>
+
+    <div class="w-16 h-16 mx-auto mb-8 flex items-center justify-center">
+      <lord-icon
+        src="https://cdn.lordicon.com/oqdmuxru.json"
+        trigger="loop"
+        delay="2000"
+        colors="primary:#0A2140,secondary:#AAC5E5"
+        style="width:64px;height:64px"
+      ></lord-icon>
+    </div>
+
+    <p class="font-serif text-xl text-wedding-navy/80 italic font-light leading-relaxed mb-4">
+      Tu presencia es el regalo más grande que nos podés dar.
+      Por favor confirmá tu asistencia antes del
+      <strong class="not-italic font-medium text-wedding-navy">1 de septiembre de 2026</strong>.
+    </p>
+
+    <p class="font-sans text-sm text-wedding-navy/60 mb-10">
+      Completá el formulario para que podamos tenerte en cuenta en todos los detalles.
+    </p>
+
+    <a
+      href={GOOGLE_FORMS_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn-primary mx-auto"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+      </svg>
+      Confirmar asistencia
+    </a>
+  </div>
+</section>

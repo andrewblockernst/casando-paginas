@@ -1,0 +1,53 @@
+---
+// Sección de regalos
+// TODO: Reemplazar con la URL real de Mercadopago
+const MERCADOPAGO_URL = 'https://link.mercadopago.com.ar'; // ← Reemplazar con URL real
+---
+
+<section id="regalos" class="py-24 px-6 bg-wedding-navy text-white text-center">
+  <div class="max-w-2xl mx-auto">
+    <div class="w-16 h-16 mx-auto mb-8">
+      <lord-icon
+        src="https://cdn.lordicon.com/etbpzgne.json"
+        trigger="loop"
+        delay="2000"
+        colors="primary:#FDFFFA,secondary:#AAC5E5"
+        style="width:64px;height:64px"
+      ></lord-icon>
+    </div>
+
+    <p class="font-sans text-wedding-sky tracking-[0.3em] uppercase text-xs mb-3">Con todo nuestro cariño</p>
+    <h2 class="font-serif text-4xl md:text-5xl font-light tracking-wide text-white mb-6">Regalos</h2>
+    <div class="flex items-center gap-4 my-6 max-w-xs mx-auto">
+      <div class="flex-1 h-px bg-wedding-sky/30"></div>
+      <span class="text-wedding-sky text-xl">✦</span>
+      <div class="flex-1 h-px bg-wedding-sky/30"></div>
+    </div>
+
+    <p class="font-serif text-xl italic font-light leading-relaxed text-white/80 mb-4">
+      "El regalo más preciado ya lo nos dieron — su presencia y cariño."
+    </p>
+
+    <p class="font-sans text-sm text-white/60 leading-relaxed mb-10 max-w-lg mx-auto">
+      Si querés tener un gesto especial con nosotros, podés hacernos una contribución
+      para ayudarnos a construir nuestro nido. ¡Cualquier detalle lo agradecemos de todo corazón!
+    </p>
+
+    <a
+      href={MERCADOPAGO_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-3 px-10 py-4 bg-wedding-sky text-wedding-navy font-sans font-medium tracking-widest uppercase text-sm transition-all duration-300 hover:bg-white hover:text-wedding-navy mx-auto"
+    >
+      <!-- Ícono de Mercadopago simplificado -->
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
+      </svg>
+      Hacernos un regalo
+    </a>
+
+    <p class="mt-6 font-sans text-xs text-white/40 tracking-wide">
+      Transferencia vía Mercado Pago · Link de pago seguro
+    </p>
+  </div>
+</section>
