@@ -1,11 +1,8 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
-import vercel from '@astrojs/vercel/serverless';
 
-// https://astro.build/config
 export default defineConfig({
-  output: 'server',
+  output: 'static', // Cambiar de 'server' a 'static'
   integrations: [tailwind()],
-  adapter: vercel({}),
-});  
+  // Remover el adapter de Vercel si existe
+});
