@@ -1,17 +1,14 @@
 ---
 // Hero con carrusel de fotos
-// Slides placeholder - reemplazar con fotos reales
 const slides = [
-  { bg: '#AAC5E5', label: 'Foto 1 — Agregar imagen real aquí' },
-  { bg: '#BED5C8', label: 'Foto 2 — Agregar imagen real aquí' },
-  { bg: '#0A2140', label: 'Foto 3 — Agregar imagen real aquí' },
-  { bg: '#AAC5E5', label: 'Foto 4 — Agregar imagen real aquí' },
+  { src: '/images/WhatsApp%20Image%202026-02-22%20at%2018.22.37.jpeg', alt: 'Caro y Lauti' },
+  { src: '/images/WhatsApp%20Image%202026-02-22%20at%2018.22.37%20(1).jpeg', alt: 'Caro y Lauti' },
+  { src: '/images/WhatsApp%20Image%202026-02-22%20at%2018.22.37%20(2).jpeg', alt: 'Caro y Lauti' },
+  { src: '/images/WhatsApp%20Image%202026-02-22%20at%2018.22.37%20(3).jpeg', alt: 'Caro y Lauti' },
+  { src: '/images/WhatsApp%20Image%202026-02-22%20at%2018.22.37%20(4).jpeg', alt: 'Caro y Lauti' },
+  { src: '/images/WhatsApp%20Image%202026-02-22%20at%2018.22.38.jpeg', alt: 'Caro y Lauti' },
+  { src: '/images/WhatsApp%20Image%202026-02-22%20at%2018.22.38%20(1).jpeg', alt: 'Caro y Lauti' },
 ];
-// Para usar imágenes reales, reemplazar el array con:
-// const slides = [
-//   { src: '/images/foto1.jpg' },
-//   { src: '/images/foto2.jpg' },
-// ];
 ---
 
 <section id="inicio" class="relative w-full h-screen min-h-[600px] overflow-hidden">
@@ -21,12 +18,15 @@ const slides = [
       <div
         class="carousel-slide absolute inset-0 w-full h-full transition-opacity duration-1000"
         data-index={i}
-        style={`background-color: ${slide.bg}; opacity: ${i === 0 ? 1 : 0};`}
+        style={`opacity: ${i === 0 ? 1 : 0};`}
       >
-        <!-- Placeholder: reemplazar con <img src={slide.src} class="w-full h-full object-cover" /> -->
-        <div class="w-full h-full flex items-center justify-center">
-          <span class="text-white/30 font-sans text-sm tracking-widest uppercase">{slide.label}</span>
-        </div>
+        <img
+          src={slide.src}
+          alt={slide.alt}
+          class="w-full h-full object-cover"
+          loading={i === 0 ? 'eager' : 'lazy'}
+          decoding="async"
+        />
       </div>
     ))}
 
@@ -37,7 +37,7 @@ const slides = [
     <div class="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-6">
       <!-- Logo -->
       <img
-        src="/images/logo-casamiento.png"
+        src="/images/logo-casamiento-white.png"
         alt="Caro & Lauti"
         class="w-48 md:w-64 lg:w-80 mb-8 drop-shadow-lg animate-fade-in"
       />
