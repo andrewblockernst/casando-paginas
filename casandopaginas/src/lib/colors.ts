@@ -8,7 +8,7 @@ export const weddingColors = {
   sky: "#AAC5E5", // Azul cielo - acentos secundarios, fondos de secciones alternas
   cream: "#FDFFFA", // Blanco crema - fondo principal de la página
   sage: "#BED5C8", // Verde salvia - acentos sutiles, separadores, hovers
-  navy: "#0A2140", // Azul marino profundo - texto, botones, encabezados
+  navy: "#0A2140", // Azul marino profundo - texto, botones, encabezados - TODO: aja. 
 } as const;
 
 export type WeddingColorKey = keyof typeof weddingColors;
