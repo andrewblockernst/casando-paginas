@@ -6,23 +6,21 @@ import GiftCatalog from '../components/GiftCatalog.astro';
 
 import { supabase } from '../lib/supabaseClient';
 
-const { slug } = Astro.params;
+export const prerender = true;
 
-// 1. Obtener evento
-const { data: event } = await supabase
-  .from('events')
-  .select('*')
-  .eq('slug', slug)
-  .single();
+export async function getStaticPaths() {
+  const targetSlug = 'caro-y-lauti-2026';
 
-if (!event) {
-  Astro.response.status = 404;
-}
+  const { data: event } = await supabase
+    .from('events')
+    .select('*')
+    .eq('slug', targetSlug)
+    .single();
 
-// 2. Obtener catálogo
-let gifts = [];
+  if (!event) {
+    return [];
+  }
 
-if (event) {
   const { data: giftItems } = await supabase
     .from('gift_items')
     .select('*')
@@ -31,8 +29,18 @@ if (event) {
     .order('sort_order', { ascending: true })
     .order('created_at', { ascending: true });
 
-  gifts = giftItems ?? [];
+  return [
+    {
+      params: { slug: targetSlug },
+      props: {
+        event,
+        gifts: giftItems ?? [],
+      },
+    },
+  ];
 }
+
+const { event, gifts } = Astro.props;
 ---
 
 <EventLayout title={event ? event.title : "Evento no encontrado"}>
