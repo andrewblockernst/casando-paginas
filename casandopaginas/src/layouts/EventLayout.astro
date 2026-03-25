@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css';
+
 export interface Props {
   title?: string;
 }
@@ -11,6 +13,9 @@ const { title = "Casamiento" } = Astro.props;
     <meta charset="utf-8" />
     <title>{title}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#FDFFFA" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#FDFFFA" />
   </head>
 
   <body class="min-h-screen bg-slate-50 text-slate-900">
