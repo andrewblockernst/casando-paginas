@@ -33,17 +33,24 @@ const MERCADOPAGO_URL = 'https://link.mercadopago.com.ar'; // ← Reemplazar con
       para ayudarnos a construir nuestro nido. ¡Cualquier detalle lo agradecemos de todo corazón!
     </p>
 
+    <p class="font-sans text-xs tracking-[0.25em] uppercase text-wedding-sky mb-4 animate-pulse">
+      Click para hacer un regalo
+    </p>
+
     <a
       href={MERCADOPAGO_URL}
       target="_blank"
       rel="noopener noreferrer"
-      class="inline-flex items-center gap-3 px-10 py-4 bg-wedding-sky text-wedding-navy font-sans font-medium tracking-widest uppercase text-sm transition-all duration-300 hover:bg-white hover:text-wedding-navy mx-auto"
+      class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-wedding-sky text-wedding-navy transition-all duration-300 hover:bg-white hover:text-wedding-navy hover:scale-105 mx-auto"
+      aria-label="Hacernos un regalo"
     >
-      <!-- Ícono de Mercadopago simplificado -->
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
-      </svg>
-      Hacernos un regalo
+      <lord-icon
+        src="https://cdn.lordicon.com/kezeezyg.json"
+        trigger="loop"
+        delay="1800"
+        colors="primary:#0A2140,secondary:#FDFFFA"
+        style="width:42px;height:42px"
+      ></lord-icon>
     </a>
 
     <p class="mt-6 font-sans text-xs text-white/40 tracking-wide">
