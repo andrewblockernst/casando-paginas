@@ -19,7 +19,7 @@ const event = Astro.props as EventProps;
   <p class="text-lg text-slate-600 mb-4">{event.title}</p>
 
   {event.event_date && (
-    <p class="text-md font-semibold">
+    <p class="text-base font-semibold">
       {new Date(event.event_date).toLocaleDateString('es-AR', {
         day: '2-digit',
         month: 'long',

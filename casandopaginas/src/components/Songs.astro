@@ -3,7 +3,7 @@
 // Las canciones se guardan en localStorage del navegador
 ---
 
-<section id="canciones" class="py-24 px-6 bg-wedding-cream">
+<section id="canciones" class="py-14 md:py-24 px-6 bg-wedding-cream">
   <div class="max-w-3xl mx-auto">
     <div class="text-center mb-12">
       <div class="w-16 h-16 mx-auto mb-6">
@@ -54,7 +54,7 @@
 
     <!-- Lista de canciones -->
     <div id="songs-list-container" class="mb-6">
-      <div class="flex items-center justify-between mb-4">
+      <div class="flex items-start sm:items-center justify-between gap-2 mb-4">
         <h3 class="font-serif text-xl text-wedding-navy font-light">
           Playlist colaborativa
           <span id="songs-count" class="font-sans text-sm text-wedding-navy/40 ml-2">(0 canciones)</span>
@@ -72,7 +72,7 @@
       </div>
 
       <!-- Lista vacía placeholder -->
-      <div id="songs-empty" class="border border-dashed border-wedding-sage/40 p-12 text-center">
+      <div id="songs-empty" class="border border-dashed border-wedding-sage/40 p-8 md:p-12 text-center">
         <p class="font-serif text-lg italic text-wedding-navy/30">
           Todavía no hay canciones. ¡Sé el primero en agregar una!
         </p>
@@ -123,36 +123,14 @@
     empty.classList.add('hidden');
 
     list.innerHTML = songs.map((song, i) => `
-      <li class="flex items-center justify-between gap-3 px-4 py-3 bg-white border border-wedding-sage/30 group hover:border-wedding-sky/40 transition-colors duration-200">
-        <div class="flex items-center gap-3">
-          <span class="font-sans text-xs text-wedding-navy/30 w-5 text-right">${i + 1}</span>
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-wedding-sky/60 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
-          </svg>
-          <span class="font-sans text-sm text-wedding-navy">${song.text}</span>
-        </div>
-        <button
-          data-delete="${song.id}"
-          class="text-wedding-navy/20 hover:text-rose-400 transition-colors duration-200 opacity-0 group-hover:opacity-100"
-          title="Eliminar"
-          aria-label="Eliminar canción"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
+      <li class="flex items-center gap-3 px-4 py-3 bg-white border border-wedding-sage/30 hover:border-wedding-sky/40 transition-colors duration-200">
+        <span class="font-sans text-xs text-wedding-navy/30 w-5 text-right shrink-0">${i + 1}</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-wedding-sky/60 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+        </svg>
+        <span class="font-sans text-sm text-wedding-navy">${song.text}</span>
       </li>
     `).join('');
-
-    // Delete listeners
-    list.querySelectorAll('[data-delete]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const id = (btn as HTMLElement).dataset.delete!;
-        const updated = loadSongs().filter(s => s.id !== id);
-        saveSongs(updated);
-        renderSongs();
-      });
-    });
   }
 
   // Add song

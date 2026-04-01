@@ -15,26 +15,26 @@ const { gifts } = Astro.props;
 ---
 
 <section class="mb-10">
-  <h2 class="text-xl font-semibold mb-4">Regalos y donaciones</h2>
+  <h2 class="font-serif text-xl font-light mb-4 text-wedding-navy">Regalos y donaciones</h2>
 
   {gifts.length === 0 ? (
-    <p class="text-slate-500 text-sm">
+    <p class="font-sans text-wedding-navy/50 text-sm">
       Todavía no hay regalos cargados.
     </p>
   ) : (
     <ul class="space-y-4">
-      {gifts.map((gift) => (
-        <li class="border border-slate-200 rounded-lg p-4 bg-white shadow-sm">
-          <h3 class="font-semibold mb-1">{gift.name}</h3>
+      {gifts.map((gift: GiftItem) => (
+        <li class="border border-wedding-sage/40 p-4 bg-wedding-cream shadow-sm">
+          <h3 class="font-serif font-light text-wedding-navy mb-1">{gift.name}</h3>
 
           {gift.description && (
-            <p class="text-slate-600 text-sm mb-2">
+            <p class="font-sans text-wedding-navy/60 text-sm mb-2">
               {gift.description}
             </p>
           )}
 
           {(gift.price_suggested !== null && gift.price_suggested !== undefined) && (
-            <p class="text-sm font-medium text-emerald-700">
+            <p class="font-sans text-sm font-medium text-wedding-sage">
               Sugerido: {gift.price_suggested.toLocaleString('es-AR', {
                 style: 'currency',
                 currency: gift.currency,
@@ -42,9 +42,7 @@ const { gifts } = Astro.props;
             </p>
           )}
 
-          <button
-            class="mt-3 inline-flex items-center justify-center rounded-md border border-emerald-600 px-3 py-1.5 text-sm font-medium text-emerald-700 hover:bg-emerald-50 transition"
-          >
+          <button class="mt-3 btn-secondary text-xs px-4 py-1.5">
             Aportar a este regalo
           </button>
         </li>

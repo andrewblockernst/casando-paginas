@@ -45,6 +45,7 @@ const faqs = [
           trigger="hover"
           colors="primary:#0A2140,secondary:#AAC5E5"
           style="width:64px;height:64px"
+          aria-hidden="true"
         ></lord-icon>
       </div>
       <p class="font-sans text-wedding-sky tracking-[0.3em] uppercase text-xs mb-3">Todo lo que necesitás saber</p>
@@ -62,15 +63,16 @@ const faqs = [
             class="faq-trigger w-full text-left px-6 py-5 flex items-center justify-between gap-4 hover:bg-wedding-cream/80 transition-colors duration-200"
             data-faq={i}
             aria-expanded="false"
+            aria-controls={`faq-answer-${i}`}
           >
             <span class="font-serif text-lg text-wedding-navy font-light">{faq.q}</span>
             <span class="faq-icon text-wedding-sky shrink-0 transition-transform duration-300">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
               </svg>
             </span>
           </button>
-          <div class="faq-answer hidden px-6 pb-5 pt-0">
+          <div id={`faq-answer-${i}`} class="faq-answer hidden px-6 pb-5 pt-0">
             <p class="font-sans text-sm text-wedding-navy/70 leading-relaxed">{faq.a}</p>
           </div>
         </div>
