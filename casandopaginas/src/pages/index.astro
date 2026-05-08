@@ -63,10 +63,12 @@ import Footer from '../components/Footer.astro';
         <div class="hidden md:flex items-center gap-8">
           {[
             { href: '#evento', label: 'El Día' },
+            { href: '#alojamiento', label: 'Alojamiento' },
             { href: '#asistencia', label: 'Asistencia' },
             { href: '#vestimenta', label: 'Vestimenta' },
             { href: '#regalos', label: 'Regalos' },
             { href: '#canciones', label: 'Canciones' },
+            { href: '#fotos', label: 'Fotos' },
             { href: '#preguntas', label: 'FAQ' },
           ].map(link => (
             <a
@@ -97,10 +99,12 @@ import Footer from '../components/Footer.astro';
         <div class="max-w-6xl mx-auto flex flex-col gap-3 pt-4 px-2">
           {[
             { href: '#evento', label: 'El Día' },
+            { href: '#alojamiento', label: 'Alojamiento' },
             { href: '#asistencia', label: 'Asistencia' },
             { href: '#vestimenta', label: 'Vestimenta' },
             { href: '#regalos', label: 'Regalos' },
             { href: '#canciones', label: 'Canciones' },
+            { href: '#fotos', label: 'Fotos' },
             { href: '#preguntas', label: 'FAQ' },
           ].map(link => (
             <a
@@ -118,10 +122,50 @@ import Footer from '../components/Footer.astro';
     <Hero />
     <Countdown />
     <EventDetails />
+
+    <!-- Alojamiento -->
+    <section id="alojamiento" class="py-14 md:py-24 px-6 bg-white">
+      <div class="max-w-2xl mx-auto text-center">
+        <p class="font-sans text-wedding-sky tracking-[0.3em] uppercase text-xs mb-3">Para los que vienen de lejos</p>
+        <h2 class="font-serif text-3xl md:text-4xl font-light tracking-wide text-wedding-navy mb-4">Alojamiento</h2>
+        <div class="flex items-center gap-4 my-6 max-w-xs mx-auto">
+          <div class="flex-1 h-px bg-wedding-sage/30"></div>
+          <span class="text-wedding-sage text-xl">✦</span>
+          <div class="flex-1 h-px bg-wedding-sage/30"></div>
+        </div>
+        <p class="font-serif text-xl italic font-light text-wedding-navy/60 leading-relaxed mb-8">
+          Próximamente compartiremos opciones de alojamiento cerca del salón para que nadie se pierda la fiesta.
+        </p>
+        <div class="border border-dashed border-wedding-sage/40 p-8">
+          <p class="font-sans text-xs tracking-[0.2em] uppercase text-wedding-navy/30">Información disponible pronto</p>
+        </div>
+      </div>
+    </section>
+
     <RSVP />
     <DressCode />
     <Gifts />
     <Songs />
+
+    <!-- Fotos -->
+    <section id="fotos" class="py-14 md:py-24 px-6 bg-wedding-cream">
+      <div class="max-w-2xl mx-auto text-center">
+        <p class="font-sans text-wedding-sky tracking-[0.3em] uppercase text-xs mb-3">Los mejores momentos</p>
+        <h2 class="font-serif text-3xl md:text-4xl font-light tracking-wide text-wedding-navy mb-4">Fotos</h2>
+        <div class="flex items-center gap-4 my-6 max-w-xs mx-auto">
+          <div class="flex-1 h-px bg-wedding-sage/30"></div>
+          <span class="text-wedding-sage text-xl">✦</span>
+          <div class="flex-1 h-px bg-wedding-sage/30"></div>
+        </div>
+        <p class="font-serif text-xl italic font-light text-wedding-navy/60 leading-relaxed mb-8">
+          Después de la fiesta, acá vas a poder encontrar las fotos del día más especial. ¡Muy pronto!
+        </p>
+        <div class="border border-dashed border-wedding-sage/40 p-8">
+          <p class="font-sans text-xs tracking-[0.2em] uppercase text-wedding-navy/30">Galería disponible después del 12.10.2026</p>
+        </div>
+      </div>
+    </section>
+
     <FAQ />
     <Farewell />
     <Footer />
